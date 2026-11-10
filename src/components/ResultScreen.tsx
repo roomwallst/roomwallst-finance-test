@@ -82,7 +82,7 @@ export default function ResultScreen({ result, onRestart }: Props) {
                   <div className="bar__track" aria-hidden="true">
                     <div className="bar__fill" style={{ width: `${s.score}%`, animationDelay: `${i * 70}ms` }} />
                   </div>
-                  {s.limits.length > 0 && <p className="bar__limit">ⓘ {s.limits[s.limits.length - 1]}</p>}
+                  {s.limits.filter((reason) => !reason.includes('가상자산은 다른 자산보다 앞서 배치하지 않도록 설계했어요.')).slice(-1).map((reason) => <p className="bar__limit" key={reason}>ⓘ {reason}</p>)}
                 </li>
               );
             })}
